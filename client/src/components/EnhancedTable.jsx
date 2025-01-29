@@ -297,7 +297,7 @@ export default function EnhancedTable() {
     useEffect(() => {
         console.log('Fetching data for page:', page + 1, 'Rows per page:', rowsPerPage);  // Log page and rowsPerPage
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/visitors?page=${page + 1}&limit=${rowsPerPage}`);
+            const response = await fetch(`https://visitor-management-system-1.onrender.com/api/visitors?page=${page + 1}&limit=${rowsPerPage}`);
             const data = await response.json();
 
             console.log('Fetched data:', data);  // Log to verify API response
@@ -353,7 +353,7 @@ export default function EnhancedTable() {
         setIsSubmitting(true);
 
 
-        const response = await fetch('http://localhost:5000/api/visitors/', {
+        const response = await fetch('https://visitor-management-system-1.onrender.com/api/visitors/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -386,7 +386,7 @@ export default function EnhancedTable() {
     };
     const handleSubmit2 = async () => {
         // Send updated data to the server
-        const response = await fetch(`http://localhost:5000/api/visitors/${editVisitor.id}`, {
+        const response = await fetch(`https://visitor-management-system-1.onrender.com/api/visitors/${editVisitor.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editVisitor),
@@ -398,7 +398,7 @@ export default function EnhancedTable() {
                 prevRows.map((row) => (row.id === updatedVisitor.id ? updatedVisitor : row))
             );
             const fetchData = async () => {
-                const data = await fetch(`http://localhost:5000/api/visitors?page=${page + 1}&limit=${rowsPerPage}`);
+                const data = await fetch(`https://visitor-management-system-1.onrender.com/api/visitors?page=${page + 1}&limit=${rowsPerPage}`);
                 const result = await data.json();
                 setRows(result.data);
                 setTotalRows(result.pagination.total);  // Update pagination count
@@ -419,7 +419,7 @@ export default function EnhancedTable() {
 
             // Perform deletion for each selected visitor
             const deletePromises = selected.map(async (id) => {
-                const response = await fetch(`http://localhost:5000/api/visitors/${id}`, {
+                const response = await fetch(`https://visitor-management-system-1.onrender.com/api/visitors/${id}`, {
                     method: 'DELETE',
                 });
                 if (response.ok) {
@@ -468,7 +468,7 @@ export default function EnhancedTable() {
                     };
 
                     const backendResponse = await axios.put(
-                        `http://localhost:5000/api/visitors/${updatedVisitor.id}`,
+                        `https://visitor-management-system-1.onrender.com/api/visitors/${updatedVisitor.id}`,
                         updatedVisitor
                     );
 
@@ -515,7 +515,7 @@ export default function EnhancedTable() {
                 };
 
                 const backendResponse = await axios.put(
-                    `http://localhost:5000/api/visitors/${editVisitor.id}`,
+                    `https://visitor-management-system-1.onrender.com/api/visitors/${editVisitor.id}`,
                     updatedVisitor
                 );
 

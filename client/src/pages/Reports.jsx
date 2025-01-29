@@ -55,7 +55,7 @@ const Reports = () => {
 
     const fetchVisitorData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/visitors/all');
+            const response = await fetch('https://visitor-management-system-1.onrender.com/api/visitors/all');
             const data = await response.json();
             setVisitors(data);
             processAnalytics(data);
